@@ -1,27 +1,53 @@
 export class BowlingGame {
     /**
-     * Calcule le score d'une partie de bowling représentée par une chaîne de caractères.
-     * Ex: "9-9-9-9-9-9-9-9-9-9-" => 90
+     * Convertit une chaîne de lancers de bowling en tableau de scores numériques.
+     * - "-" = 0
+     * - "1"-"9" = valeur correspondante
+     * - "/" = spare = 10 - valeur précédente
      */
-    public scoreGame(input: string): number {
+    private parseRolls(input: string): number[] {
         const rolls: number[] = [];
 
-        // Convertit chaque caractère en nombre de quilles (0 pour '-', sinon chiffre)
-        for (const char of input) {
+        for (let i = 0; i < input.length; i++) {
+            const char = input[i];
+
             if (char === '-') {
                 rolls.push(0);
+            } else if (char === '/') {
+                const lastRoll = rolls[rolls.length - 1];
+                rolls.push(10 - lastRoll); // Spare : complète à 10
             } else {
                 rolls.push(parseInt(char, 10));
             }
         }
 
+        return rolls;
+    }
+
+    /**
+     * Calcule le score total d'une partie de bowling.
+     * @param input La chaîne représentant les lancers (ex: "5/5/5/5/5/5/5/5/5/5/5")
+     * @returns Le score total du jeu
+     */
+    public scoreGame(input: string): number {
+        const rolls = this.parseRolls(input);
         let score = 0;
         let rollIndex = 0;
 
-        // Calcule le score des 10 frames (chaque frame = 2 lancers ici)
+        // On boucle sur les 10 frames
         for (let frame = 0; frame < 10; frame++) {
-            score += rolls[rollIndex] + rolls[rollIndex + 1];
-            rollIndex += 2;
+            const first = rolls[rollIndex];
+            const second = rolls[rollIndex + 1];
+
+            if (first + second === 10 && second !== 10) {
+                // Spare détecté : score = 10 + lancer suivant
+                score += 10 + rolls[rollIndex + 2];
+                rollIndex += 2;
+            } else {
+                // Frame normale (sans spare)
+                score += first + second;
+                rollIndex += 2;
+            }
         }
 
         return score;

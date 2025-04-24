@@ -25,4 +25,13 @@ describe('BowlingGame - scoreGame (sans spare ni strike)', () => {
     it('score 20 pour "11111111111111111111"', () => {
         expect(game.scoreGame("11111111111111111111")).toBe(20);
     });
+
+    it('score 150 pour "5/5/5/5/5/5/5/5/5/5/5"', () => {
+        expect(game.scoreGame("5/5/5/5/5/5/5/5/5/5/5")).toBe(150);
+    });
+
+    it('score 16 pour "5/3-----------------"', () => {
+        expect(game.scoreGame("5/3-----------------")).toBe(16);
+    });
+
 });
