@@ -1,0 +1,65 @@
+📘 Résumé DevOps – Chapitres 1 à 8
+
+Chapitre 1 – Culture DevOps
+Objectif : Briser les silos entre Dev & Ops pour livrer plus vite et mieux.
+
+Principes : Collaboration, Automatisation (CI/CD), Amélioration continue, Responsabilité partagée, Mesure (DORA, KPI).
+
+Exemple : Netflix – Déploiements massifs + Chaos Engineering --> Provoquer des pannes aléatoires pour tester et renforcer la résilience des systèmes de production.​
+
+Chapitre 2 – Chaîne CI/CD
+CI : Intégration continue → Merge + Build/Test auto.
+
+CD : Livraison continue → Déploiement auto.
+
+Pipeline : Git ➝ Dépendances ➝ Build ➝ Test ➝ Lint ➝ Notification.
+
+Bonnes pratiques : Pipelines < 10 min, secrets managés, environnements isolés.
+
+Chapitre 3 – Automatisation Build/Test
+Qualité logicielle : Xunit, SonarQube.
+
+Optimisation : Cache des dépendances, blocage sur vulnérabilités (dotnet list package --vulnerable).
+
+Fun DevOps : Commit avec emoji 🚀, météo des tests, review alien 👽.
+
+Chapitre 4 – Infrastructure as Code (IaC)
+Terraform : Fichiers déclaratifs pour créer l’infra.
+
+Cycle : init ➝ plan ➝ apply.
+
+Bonnes pratiques : Séparation en fichiers (db.tf, network.tf), variables pour secrets, versionné sur Git.
+
+Chapitre 5 – Docker & Conteneurisation
+Concept : Empaqueter, livrer et exécuter partout.
+
+Composants : Dockerfile, Image, Conteneur, Registry.
+
+Cycle de vie : docker build ➝ docker run ➝ docker push.
+
+TPs : Serveur HTML statique, curl, audit vulnérabilités (docker scout), réseau Docker, docker-compose.
+
+Chapitre 6 – Monitoring & Observabilité
+Pourquoi ? Prévenir les pannes, optimiser, respecter SLA.
+
+4 niveaux : Infra, App, Réseau, Business.
+
+Outils : Prometheus, Grafana, ELK, Datadog.
+
+Tests prod : Health check, Canary, Chaos Eng.
+
+Bonnes pratiques : Runbooks, alertes utiles, métriques clés (SLI/SLO/SLA).
+
+Chapitre 7 – Sécurité dans DevOps (DevSecOps)
+Analyse : Code (SonarQube), Dépendances (OWASP), Infra (Terraform + Checkov), Secrets (Vault, GitGuardian).
+
+Automatisation : Pre-commit hooks, scan des clés (ex : GitHub).
+
+Culture : Partage des responsabilités, fail & fix rapide.
+
+Chapitre 8 – Collaboration Dev/Ops
+Agilité étendue : DevOps = Agilité + Déploiement réel.
+
+Objectifs : Feedback rapide, outillage partagé, réunions courtes.
+
+Manifeste DevOps : “Done = en prod”, automatisation complète.
